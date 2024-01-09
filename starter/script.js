@@ -90,16 +90,27 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+  // Password length at least 8 characters no more than 128
+  // ask about the different types
+  // validate the answers - choose at least one character type
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  // how do we get a random item from this array
+  // generate random number 
+  var randomNum = Math.random() //mulitply by size of array
+  arr[0]
 
 }
 
 // Function to generate password with user input
 function generatePassword() {
+  // ask the questions
+  getPasswordOptions();
+
+  // genererate password
+
 
 }
 
@@ -116,3 +127,28 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
+
+// // Your application must:
+
+// Generate a password when the button is clicked.
+
+// Present a series of prompts for password criteria:
+
+// Length of password:
+
+// At least 8 characters but no more than 128.
+
+// Character types:
+
+// Lowercase
+
+// Uppercase
+
+// Numeric
+
+// Special characters ($@%&*, etc.)
+
+// Code should validate for each input and at least one character type should be selected.
+
+// Once all prompts are answered, the password should be generated and displayed in an alert or written to the page.
+
