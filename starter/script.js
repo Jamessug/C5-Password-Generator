@@ -55,24 +55,31 @@ function getPasswordOptions() {
   return passwordOptions;
 }
 
-
 // Function for getting a random element from an array
 function getRandom(arr) {
-  // how do we get a random item from this array
-  // generate random number 
-  var randomNum = Math.random() //mulitply by size of array
-  arr[0]
-
+  // This function returns a random element from the provided array
+  var randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
 }
 
 // Function to generate password with user input
-function generatePassword() {
-  // ask the questions
-  getPasswordOptions();
+function generatePassword(options) {
+  // This function generates a password based on user input (options)
 
-  // genererate password
+  // Combine character arrays based on user choices
+  var characters = [];
+  if (options.lowercase) characters = characters.concat(lowerCasedCharacters);
+  if (options.uppercase) characters = characters.concat(upperCasedCharacters);
+  if (options.numeric) characters = characters.concat(numericCharacters);
+  if (options.special) characters = characters.concat(specialCharacters);
 
+  // Generate password
+  var password = '';
+  for (var i = 0; i < options.length; i++) {
+    password += getRandom(characters);
+  }
 
+  return password;
 }
 
 // Get references to the #generate element
@@ -80,7 +87,10 @@ var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  // This function is the process of getting options, generating a password, and displaying it
+
+  var options = getPasswordOptions(); // Getting user options
+  var password = generatePassword(options); // Generating password based on options
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
@@ -89,27 +99,4 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
 
-// // Your application must:
-
-// Generate a password when the button is clicked.
-
-// Present a series of prompts for password criteria:
-
-// Length of password:
-
-// At least 8 characters but no more than 128.
-
-// Character types:
-
-// Lowercase
-
-// Uppercase
-
-// Numeric
-
-// Special characters ($@%&*, etc.)
-
-// Code should validate for each input and at least one character type should be selected.
-
-// Once all prompts are answered, the password should be generated and displayed in an alert or written to the page.
 
